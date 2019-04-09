@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ALAJeffreyClicker</string>
+    <string name="counter">0</string>
 </resources>
