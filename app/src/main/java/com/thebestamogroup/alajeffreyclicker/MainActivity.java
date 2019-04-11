@@ -22,11 +22,10 @@ public class MainActivity extends AppCompatActivity {
 
         clickHere.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                String display = String.format(getString(R.string.counter, Integer.toString(++num)));
-                tView.setText(display);
+
             }
         });
 
     }
 }
-}
+
