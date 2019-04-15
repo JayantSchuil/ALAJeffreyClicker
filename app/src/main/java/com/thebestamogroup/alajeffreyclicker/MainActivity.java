@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             ed.putInt("Nieuwe Mercedez-Benz", 0);
             ed.putInt("Niewe Baby", 0);
 
-            ed.commit();
+            ed.apply();
         }
     }
 }
