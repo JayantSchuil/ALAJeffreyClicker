@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -64,6 +67,48 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Timer timer = new Timer();
+        long delay = 0;
+        long intervalPeriod = 1 * 1000;
 
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                int currentJeffs = sharedPrefs.getInt("Jeffrey Punten", 0);
+                getSharedPreferences("player", MODE_PRIVATE)
+                        .edit()
+                        .putInt(
+                                "Jeffrey Punten",
+                                currentJeffs
+                                        + sharedPrefs.getInt("Motiverende Speech",0) * 1
+                        )
+                        .apply();
+            }
+        };
+
+        TimerTask updateJeff = new TimerTask(){
+            public void run() {
+                MainActivity.this.runOnUiThread(
+                        new Runnable() {
+
+                            @Override
+                            public void run() {
+                                textView2.setText(String.valueOf(sharedPrefs.getInt("Jeffrey Punten", 0)));
+                            }
+
+                        }
+                );
+            }
+        };
+
+        /*TimerTask updateJeff = new TimerTask() {
+            @Override
+            public final void run() {
+                runOnUiThread(textView2.setText(String.valueOf(sharedPrefs.getInt("Jeffrey Punten", 0))));)
+        }
+        };*/
+
+        timer.scheduleAtFixedRate(task, delay, intervalPeriod);
+        timer.scheduleAtFixedRate(updateJeff, delay, intervalPeriod);
     }
 }

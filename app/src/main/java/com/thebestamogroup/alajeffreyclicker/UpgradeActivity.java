@@ -40,6 +40,5 @@ public class UpgradeActivity extends AppCompatActivity {
                 costSpeech.setText("Prijs: "+String.valueOf(currentPrice));
             }
         });
-
     }
 }
