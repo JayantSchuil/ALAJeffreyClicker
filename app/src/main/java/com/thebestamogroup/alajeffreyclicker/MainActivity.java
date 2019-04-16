@@ -81,6 +81,11 @@ public class MainActivity extends AppCompatActivity {
                                 "Jeffrey Punten",
                                 currentJeffs
                                         + sharedPrefs.getInt("Motiverende Speech",0) * 1
+                                        + sharedPrefs.getInt("Nieuw Blazter Gebouw",0) * 5
+                                        + sharedPrefs.getInt("Sterkere Wing Chunners",0) * 20
+                                        + sharedPrefs.getInt("Duitse Upgrade",0) * 88
+                                        + sharedPrefs.getInt("Nieuwe Mercedez-Benz",0) * 500
+                                        + sharedPrefs.getInt("Niewe Baby",0) * 10000
                         )
                         .apply();
             }
@@ -100,13 +105,6 @@ public class MainActivity extends AppCompatActivity {
                 );
             }
         };
-
-        /*TimerTask updateJeff = new TimerTask() {
-            @Override
-            public final void run() {
-                runOnUiThread(textView2.setText(String.valueOf(sharedPrefs.getInt("Jeffrey Punten", 0))));)
-        }
-        };*/
 
         timer.scheduleAtFixedRate(task, delay, intervalPeriod);
         timer.scheduleAtFixedRate(updateJeff, delay, intervalPeriod);

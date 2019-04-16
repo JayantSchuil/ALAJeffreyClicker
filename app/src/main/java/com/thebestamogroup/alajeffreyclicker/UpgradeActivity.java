@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class UpgradeActivity extends AppCompatActivity {
@@ -30,14 +31,23 @@ public class UpgradeActivity extends AppCompatActivity {
                 final TextView amountSpeech = findViewById(R.id.amountSpeech);
                 final TextView costSpeech = findViewById(R.id.costSpeech);
                 int currentAmount = sharedPrefs.getInt("Motiverende Speech", 0);
-                getSharedPreferences("player", MODE_PRIVATE)
-                        .edit()
-                        .putInt("Motiverende Speech", currentAmount+1)
-                        .apply();
-                amountSpeech.setText(String.valueOf(sharedPrefs.getInt("Motiverende Speech", 0)));
-
+                int currentJeffs = sharedPrefs.getInt("Jeffrey Punten", 0);
                 int currentPrice = currentAmount * 5;
-                costSpeech.setText("Prijs: "+String.valueOf(currentPrice));
+
+                if (currentPrice <= currentJeffs) {
+
+                    getSharedPreferences("player", MODE_PRIVATE)
+                            .edit()
+                            .putInt("Motiverende Speech", currentAmount + 1)
+                            .putInt("Jeffrey Punten", currentJeffs - currentPrice)
+                            .apply();
+                    amountSpeech.setText(String.valueOf(sharedPrefs.getInt("Motiverende Speech", 0)));
+                    costSpeech.setText("Prijs: " + String.valueOf(currentPrice));
+                }
+                else {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Je hebt niet genoeg Jeffreys", 5000);
+                    toast.show();
+                }
             }
         });
     }
