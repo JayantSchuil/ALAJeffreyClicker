@@ -1,9 +1,11 @@
 package com.thebestamogroup.alajeffreyclicker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -54,5 +56,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button buttonUpgrades = findViewById(R.id.button);
+        buttonUpgrades.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), UpgradeActivity.class));
+            }
+        });
     }
 }

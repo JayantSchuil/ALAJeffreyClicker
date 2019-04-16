@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ALAJeffreyClicker</string>
     <string name="counter">0</string>
+    <string name="title_activity_upgrade">UpgradeActivity</string>
 </resources>
