@@ -41,7 +41,7 @@
         app:layout_constraintVertical_bias="0.79"
         app:srcCompat="@drawable/smoel" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imageView"
         android:layout_width="42dp"
         android:layout_height="42dp"

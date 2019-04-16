@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button buttonUpgrades = findViewById(R.id.button);
+        ImageButton buttonUpgrades = findViewById(R.id.imageView);
         buttonUpgrades.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
