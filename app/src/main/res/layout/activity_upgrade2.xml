@@ -58,7 +58,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="Prijs: 0"
+        android:text="Prijs: 5"
         app:layout_constraintStart_toEndOf="@+id/imageSpeech"
         app:layout_constraintTop_toBottomOf="@+id/outputSpeech" />
 
@@ -113,7 +113,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="Prijs: 0"
+        android:text="Prijs: 100"
         app:layout_constraintStart_toEndOf="@+id/imageKantoor"
         app:layout_constraintTop_toBottomOf="@+id/outputKantoor" />
 
@@ -168,7 +168,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="Prijs: 0"
+        android:text="Prijs: 1000"
         app:layout_constraintStart_toEndOf="@+id/imageWingchun"
         app:layout_constraintTop_toBottomOf="@+id/outputWingchun" />
 
@@ -223,7 +223,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="Prijs: 0"
+        android:text="Prijs: 1500"
         app:layout_constraintStart_toEndOf="@+id/imageDuitsland"
         app:layout_constraintTop_toBottomOf="@+id/outputDuitsland" />
 
@@ -278,7 +278,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="Prijs: 0"
+        android:text="Prijs: 10000"
         app:layout_constraintStart_toEndOf="@+id/imageAuto"
         app:layout_constraintTop_toBottomOf="@+id/outputAuto" />
 
@@ -333,7 +333,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="Prijs: 0"
+        android:text="Prijs: 1000000"
         app:layout_constraintStart_toEndOf="@+id/imageBaby"
         app:layout_constraintTop_toBottomOf="@+id/outputBaby" />
 
