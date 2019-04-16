@@ -17,23 +17,29 @@ public class UpgradeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_upgrade2);
         final SharedPreferences sharedPrefs = getSharedPreferences("player", MODE_PRIVATE);
         final SharedPreferences.Editor ed;
-        if(!sharedPrefs.contains("initialized")){
-            ed = sharedPrefs.edit();
 
-            //Indicate that the default shared prefs have been set
-            ed.putBoolean("initialized", true);
+        final ImageButton imageSpeech = findViewById(R.id.imageSpeech);
+        final TextView costSpeech = findViewById(R.id.costSpeech);
 
-            //Initialise the Shared Preferences
-            ed.putInt("Jeffrey Punten", 0);
-            ed.putInt("Motiverende Speech", 0);
-            ed.putInt("Nieuw Blazter Gebouw", 0);
-            ed.putInt("Sterkere Wing Chunners", 0);
-            ed.putInt("Duitse Upgrade", 0);
-            ed.putInt("Nieuwe Mercedez-Benz", 0);
-            ed.putInt("Niewe Baby", 0);
+        int currentAmount = sharedPrefs.getInt("Motiverende Speech", 0);
+        int currentPrice = currentAmount * 5;
+        costSpeech.setText("Prijs: "+String.valueOf(currentPrice));
 
-            ed.apply();
-        }
+        imageSpeech.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                final TextView amountSpeech = findViewById(R.id.amountSpeech);
+                final TextView costSpeech = findViewById(R.id.costSpeech);
+                int currentAmount = sharedPrefs.getInt("Motiverende Speech", 0);
+                getSharedPreferences("player", MODE_PRIVATE)
+                        .edit()
+                        .putInt("Motiverende Speech", currentAmount+1)
+                        .apply();
+                amountSpeech.setText(String.valueOf(sharedPrefs.getInt("Motiverende Speech", 0)));
+
+                int currentPrice = currentAmount * 5;
+                costSpeech.setText("Prijs: "+String.valueOf(currentPrice));
+            }
+        });
 
     }
 }
