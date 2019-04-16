@@ -3,6 +3,10 @@ package com.thebestamogroup.alajeffreyclicker;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.content.SharedPreferences;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,8 +15,8 @@ public class MainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SharedPreferences sharedPrefs = getSharedPreferences("player", MODE_PRIVATE);
-        SharedPreferences.Editor ed;
+        final SharedPreferences sharedPrefs = getSharedPreferences("player", MODE_PRIVATE);
+        final SharedPreferences.Editor ed;
         if(!sharedPrefs.contains("initialized")){
             ed = sharedPrefs.edit();
 
@@ -30,5 +34,25 @@ public class MainActivity extends AppCompatActivity {
 
             ed.apply();
         }
+        else{
+            //If initialized set counter to correct number
+            TextView textView1 = findViewById(R.id.counter);
+            textView1.setText(String.valueOf(sharedPrefs.getInt("Jeffrey Punten", 0)));
+        }
+
+        //OnClickListener for Jeffreys smoel
+        final ImageButton button = findViewById(R.id.smoel);
+        final TextView textView2 = findViewById(R.id.counter);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                int currentJeffs = sharedPrefs.getInt("Jeffrey Punten", 0);
+                getSharedPreferences("player", MODE_PRIVATE)
+                        .edit()
+                        .putInt("Jeffrey Punten", currentJeffs+1)
+                        .apply();
+                textView2.setText(String.valueOf(sharedPrefs.getInt("Jeffrey Punten", 0)));
+            }
+        });
+
     }
 }
