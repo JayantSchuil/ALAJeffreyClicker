@@ -1,11 +1,16 @@
 package com.thebestamogroup.alajeffreyclicker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -54,5 +59,54 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button buttonUpgrades = findViewById(R.id.button);
+        buttonUpgrades.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), UpgradeActivity.class));
+            }
+        });
+
+        Timer timer = new Timer();
+        long delay = 0;
+        long intervalPeriod = 1 * 1000;
+
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                int currentJeffs = sharedPrefs.getInt("Jeffrey Punten", 0);
+                getSharedPreferences("player", MODE_PRIVATE)
+                        .edit()
+                        .putInt(
+                                "Jeffrey Punten",
+                                currentJeffs
+                                        + sharedPrefs.getInt("Motiverende Speech",0) * 1
+                                        + sharedPrefs.getInt("Nieuw Blazter Gebouw",0) * 5
+                                        + sharedPrefs.getInt("Sterkere Wing Chunners",0) * 20
+                                        + sharedPrefs.getInt("Duitse Upgrade",0) * 88
+                                        + sharedPrefs.getInt("Nieuwe Mercedez-Benz",0) * 500
+                                        + sharedPrefs.getInt("Niewe Baby",0) * 10000
+                        )
+                        .apply();
+            }
+        };
+
+        TimerTask updateJeff = new TimerTask(){
+            public void run() {
+                MainActivity.this.runOnUiThread(
+                        new Runnable() {
+
+                            @Override
+                            public void run() {
+                                textView2.setText(String.valueOf(sharedPrefs.getInt("Jeffrey Punten", 0)));
+                            }
+
+                        }
+                );
+            }
+        };
+
+        timer.scheduleAtFixedRate(task, delay, intervalPeriod);
+        timer.scheduleAtFixedRate(updateJeff, delay, intervalPeriod);
     }
 }
