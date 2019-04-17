@@ -49,11 +49,6 @@ public class UpgradeActivity extends AppCompatActivity {
                     cost = findViewById(R.id.costBaby);
                     modifier = 1000000;
                     break;
-                case "Extra Klik":
-                    amount = findViewById(R.id.amountExtraClick);
-                    cost = findViewById(R.id.costExtraClick);
-                    modifier = 1;
-                    break;
                 default:
                     amount = findViewById(R.id.amountSpeech);
                     cost = findViewById(R.id.costSpeech);
@@ -89,7 +84,6 @@ public class UpgradeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upgrade2);
         final SharedPreferences sharedPrefs = getSharedPreferences("player", MODE_PRIVATE);
-        final SharedPreferences.Editor ed;
 
         final ImageButton imageSpeech = findViewById(R.id.imageSpeech);
         final TextView costSpeech = findViewById(R.id.costSpeech);
