@@ -29,20 +29,21 @@ public class MainActivity extends AppCompatActivity {
             ed.putBoolean("initialized", true);
 
             //Initialise the Shared Preferences
-            ed.putInt("Jeffrey Punten", 0);
-            ed.putInt("Motiverende Speech", 0);
-            ed.putInt("Nieuw Blazter Gebouw", 0);
-            ed.putInt("Sterkere Wing Chunners", 0);
-            ed.putInt("Duitse Upgrade", 0);
-            ed.putInt("Nieuwe Mercedez-Benz", 0);
-            ed.putInt("Niewe Baby", 0);
+            ed.putLong("Jeffrey Punten", 0);
+            ed.putLong("Motiverende Speech", 0);
+            ed.putLong("Nieuw Blazter Gebouw", 0);
+            ed.putLong("Sterkere Wing Chunners", 0);
+            ed.putLong("Duitse Upgrade", 0);
+            ed.putLong("Nieuwe Mercedez-Benz", 0);
+            ed.putLong("Niewe Baby", 0);
+            ed.putLong("Extra Klik", 0);
 
             ed.apply();
         }
         else{
             //If initialized set counter to correct number
             TextView textView1 = findViewById(R.id.counter);
-            textView1.setText(String.valueOf(sharedPrefs.getInt("Jeffrey Punten", 0)));
+            textView1.setText(String.valueOf(sharedPrefs.getLong("Jeffrey Punten", 0)));
         }
 
         //OnClickListener for Jeffreys smoel
@@ -50,12 +51,12 @@ public class MainActivity extends AppCompatActivity {
         final TextView textView2 = findViewById(R.id.counter);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                int currentJeffs = sharedPrefs.getInt("Jeffrey Punten", 0);
+                long currentJeffs = sharedPrefs.getLong("Jeffrey Punten", 0);
                 getSharedPreferences("player", MODE_PRIVATE)
                         .edit()
-                        .putInt("Jeffrey Punten", currentJeffs+1)
+                        .putLong("Jeffrey Punten", currentJeffs+1)
                         .apply();
-                textView2.setText(String.valueOf(sharedPrefs.getInt("Jeffrey Punten", 0)));
+                textView2.setText(String.valueOf(sharedPrefs.getLong("Jeffrey Punten", 0)));
             }
         });
 
@@ -74,18 +75,18 @@ public class MainActivity extends AppCompatActivity {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                int currentJeffs = sharedPrefs.getInt("Jeffrey Punten", 0);
+                long currentJeffs = sharedPrefs.getLong("Jeffrey Punten", 0);
                 getSharedPreferences("player", MODE_PRIVATE)
                         .edit()
-                        .putInt(
+                        .putLong(
                                 "Jeffrey Punten",
                                 currentJeffs
-                                        + sharedPrefs.getInt("Motiverende Speech",0) * 1
-                                        + sharedPrefs.getInt("Nieuw Blazter Gebouw",0) * 5
-                                        + sharedPrefs.getInt("Sterkere Wing Chunners",0) * 20
-                                        + sharedPrefs.getInt("Duitse Upgrade",0) * 88
-                                        + sharedPrefs.getInt("Nieuwe Mercedez-Benz",0) * 500
-                                        + sharedPrefs.getInt("Niewe Baby",0) * 10000
+                                        + sharedPrefs.getLong("Motiverende Speech",0) * 1
+                                        + sharedPrefs.getLong("Nieuw Blazter Gebouw",0) * 5
+                                        + sharedPrefs.getLong("Sterkere Wing Chunners",0) * 20
+                                        + sharedPrefs.getLong("Duitse Upgrade",0) * 88
+                                        + sharedPrefs.getLong("Nieuwe Mercedez-Benz",0) * 500
+                                        + sharedPrefs.getLong("Niewe Baby",0) * 10000
                         )
                         .apply();
             }
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void run() {
-                                textView2.setText(String.valueOf(sharedPrefs.getInt("Jeffrey Punten", 0)));
+                                textView2.setText(String.valueOf(sharedPrefs.getLong("Jeffrey Punten", 0)));
                             }
 
                         }
