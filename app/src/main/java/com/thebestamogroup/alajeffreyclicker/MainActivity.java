@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         Timer timer = new Timer();
         long delay = 0;
-        long intervalPeriod = 1 * 1000;
+        long intervalPeriod = 16;
 
         TimerTask task = new TimerTask() {
             @Override
