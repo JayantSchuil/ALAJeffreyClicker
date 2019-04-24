@@ -29,15 +29,15 @@ public class MainActivity extends AppCompatActivity {
             ed.putBoolean("initialized", true);
 
             //Initialise the Shared Preferences
-            ed.putLong("Jeffrey Punten", 0);
+            ed.putFloat("Jeffrey Punten1", 0);
+            ed.putFloat("Jeffrey Punten2", 0);
+            ed.putLong("Totaal Jeffrey Punten", 0);
             ed.putLong("Motiverende Speech", 0);
             ed.putLong("Nieuw Blazter Gebouw", 0);
             ed.putLong("Sterkere Wing Chunners", 0);
             ed.putLong("Duitse Upgrade", 0);
             ed.putLong("Nieuwe Mercedez-Benz", 0);
             ed.putLong("Niewe Baby", 0);
-            ed.putLong("Extra Klik", 0);
-
             ed.apply();
         }
         else{
@@ -51,13 +51,9 @@ public class MainActivity extends AppCompatActivity {
         final TextView textView2 = findViewById(R.id.counter);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                long currentJeffs = sharedPrefs.getLong("Jeffrey Punten", 0);
-                getSharedPreferences("player", MODE_PRIVATE)
-                        .edit()
-                        .putLong("Jeffrey Punten", currentJeffs+1)
-                        .apply();
-                textView2.setText(String.valueOf(sharedPrefs.getLong("Jeffrey Punten", 0)));
-            }
+                float currentJeffs = sharedPrefs.getFloat("Jeffrey Punten1", 0) + 1;
+                textView2.setText(String.valueOf(currentJeffs));
+git            }
         });
 
         ImageButton buttonUpgrades = findViewById(R.id.imageView);
@@ -70,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         Timer timer = new Timer();
         long delay = 0;
-        long intervalPeriod = 1 * 1000;
+        long intervalPeriod = 1000;
 
         TimerTask task = new TimerTask() {
             @Override
