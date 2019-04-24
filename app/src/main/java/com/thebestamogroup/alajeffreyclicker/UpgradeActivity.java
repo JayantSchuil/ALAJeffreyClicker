@@ -56,18 +56,18 @@ public class UpgradeActivity extends AppCompatActivity {
                     break;
             }
 
-            int currentAmount = sharedPrefs.getInt(selectedUpgrade, 0);
-            int currentJeffs = sharedPrefs.getInt("Jeffrey Punten", 0);
-            int currentPrice = (currentAmount + 1) * modifier;
+            long currentAmount = sharedPrefs.getLong(selectedUpgrade, 0);
+            long currentJeffs = sharedPrefs.getLong("Jeffrey Punten", 0);
+            long currentPrice = (currentAmount + 1) * modifier;
 
             if (currentPrice <= currentJeffs && currentJeffs != 0) {
 
                 getSharedPreferences("player", MODE_PRIVATE)
                         .edit()
-                        .putInt(selectedUpgrade, currentAmount + 1)
-                        .putInt("Jeffrey Punten", currentJeffs - currentPrice)
+                        .putLong(selectedUpgrade, currentAmount + 1)
+                        .putLong("Jeffrey Punten", currentJeffs - currentPrice)
                         .apply();
-                amount.setText(String.valueOf(sharedPrefs.getInt(selectedUpgrade, 0)));
+                amount.setText(String.valueOf(sharedPrefs.getLong(selectedUpgrade, 0)));
                 cost.setText("Prijs: " + String.valueOf(currentPrice));
             }
             else {
@@ -84,53 +84,52 @@ public class UpgradeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upgrade2);
         final SharedPreferences sharedPrefs = getSharedPreferences("player", MODE_PRIVATE);
-        final SharedPreferences.Editor ed;
 
         final ImageButton imageSpeech = findViewById(R.id.imageSpeech);
         final TextView costSpeech = findViewById(R.id.costSpeech);
         final TextView amountSpeech = findViewById(R.id.amountSpeech);
-        int currentAmountSpeech = sharedPrefs.getInt("Motiverende Speech", 0);
-        int currentPriceSpeech = (currentAmountSpeech + 1) * 5;
+        long currentAmountSpeech = sharedPrefs.getLong("Motiverende Speech", 0);
+        long currentPriceSpeech = (currentAmountSpeech + 1) * 5;
         amountSpeech.setText(String.valueOf(currentAmountSpeech));
         costSpeech.setText("Prijs: "+String.valueOf(currentPriceSpeech));
 
         final ImageButton imageKantoor = findViewById(R.id.imageKantoor);
         final TextView costKantoor = findViewById(R.id.costKantoor);
         final TextView amountKantoor = findViewById(R.id.amountKantoor);
-        int currentAmountKantoor = sharedPrefs.getInt("Nieuw Blazter Gebouw", 0);
-        int currentPriceKantoor = (currentAmountKantoor + 1) * 100;
+        long currentAmountKantoor = sharedPrefs.getLong("Nieuw Blazter Gebouw", 0);
+        long currentPriceKantoor = (currentAmountKantoor + 1) * 100;
         amountKantoor.setText(String.valueOf(currentAmountKantoor));
         costKantoor.setText("Prijs: "+String.valueOf(currentPriceKantoor));
 
         final ImageButton imageWingchun = findViewById(R.id.imageWingchun);
         final TextView costWingchun = findViewById(R.id.costWingchun);
         final TextView amountWingchun = findViewById(R.id.amountWingchun);
-        int currentAmountWingchun = sharedPrefs.getInt("Sterkere Wing Chunners", 0);
-        int currentPriceWingchun = (currentAmountWingchun + 1) * 1000;
+        long currentAmountWingchun = sharedPrefs.getLong("Sterkere Wing Chunners", 0);
+        long currentPriceWingchun = (currentAmountWingchun + 1) * 1000;
         amountWingchun.setText(String.valueOf(currentAmountWingchun));
         costWingchun.setText("Prijs: "+String.valueOf(currentPriceWingchun));
 
         final ImageButton imageDuitsland = findViewById(R.id.imageDuitsland);
         final TextView costDuitsland = findViewById(R.id.costDuitsland);
         final TextView amountDuitsland = findViewById(R.id.amountDuitsland);
-        int currentAmountDuitsland = sharedPrefs.getInt("Duitse Upgrade", 0);
-        int currentPriceDuitsland = (currentAmountDuitsland + 1) * 1500;
+        long currentAmountDuitsland = sharedPrefs.getLong("Duitse Upgrade", 0);
+        long currentPriceDuitsland = (currentAmountDuitsland + 1) * 1500;
         amountDuitsland.setText(String.valueOf(currentAmountDuitsland));
         costDuitsland.setText("Prijs: "+String.valueOf(currentPriceDuitsland));
 
         final ImageButton imageAuto = findViewById(R.id.imageAuto);
         final TextView costAuto = findViewById(R.id.costAuto);
         final TextView amountAuto = findViewById(R.id.amountAuto);
-        int currentAmountAuto = sharedPrefs.getInt("Nieuwe Mercedez-Benz", 0);
-        int currentPriceAuto = (currentAmountAuto + 1) * 10000;
+        long currentAmountAuto = sharedPrefs.getLong("Nieuwe Mercedez-Benz", 0);
+        long currentPriceAuto = (currentAmountAuto + 1) * 10000;
         amountAuto.setText(String.valueOf(currentAmountAuto));
         costAuto.setText("Prijs: "+String.valueOf(currentPriceAuto));
 
         final ImageButton imageBaby = findViewById(R.id.imageBaby);
         final TextView costBaby = findViewById(R.id.costBaby);
         final TextView amountBaby = findViewById(R.id.amountBaby);
-        int currentAmountBaby = sharedPrefs.getInt("Niewe Baby", 0);
-        int currentPriceBaby = (currentAmountBaby + 1) * 1000000;
+        long currentAmountBaby = sharedPrefs.getLong("Niewe Baby", 0);
+        long currentPriceBaby = (currentAmountBaby + 1) * 1000000;
         amountBaby.setText(String.valueOf(currentAmountBaby));
         costBaby.setText("Prijs: "+String.valueOf(currentPriceBaby));
 
